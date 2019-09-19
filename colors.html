@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <title>Document</title>
+  </head>
+  <style>
+    th {
+      padding: 60px;
+      border: 1px solid black;
+    }
+
+    #buttons {
+      margin-top: 10px;
+    }
+  </style>
+  <body>
+    <table>
+      <ul>
+        <th id="box"></th>
+        <th id="box"></th>
+        <th id="box"></th>
+      </ul>
+    </table>
+    <div id="buttons">
+      <button id="Toggle-color">Toggle colors</button>
+      <button id="Toggle-Border">Toggle Rounded Borders</button>
+      <button id="Add-box">Add a New box</button>
+    </div>
+    <script>
+      $(document).ready(function() {
+        var color = false;
+        var colors = ["red", "blue", "green", "black", "grey", "yellow"];
+        $("#Toggle-color").click(function() {
+          if (color == false) {
+            $("th").each(function() {
+              newcolor = colors[Math.floor(colors.length * Math.random())];
+              $(this).css("background-color", newcolor);
+            });
+            color = true;
+          } else {
+            $("th").each(function() {
+              $(this).css("background-color", "white");
+            });
+            color = false;
+          }
+        });
+        var rounded = false;
+        $("#Toggle-Border").click(function() {
+          if (rounded == false) {
+            $("th").css("border-radius", "50%");
+            rounded = true;
+          } else {
+            $("th").css("border-radius", "0%");
+            rounded = false;
+          }
+        });
+        var i = 4;
+        $("#Add-box").click(function() {
+          $("table").append("<th id=box></th>");
+        });
+      });
+    </script>
+  </body>
+</html>
